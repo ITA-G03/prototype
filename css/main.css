@@ -17,7 +17,7 @@ h6 {
     font-family: 'Microsoft YaHei', '宋体', 'Tahoma', 'Helvetica', 'Arial', sans-serif;
 }
 body {
-    padding-top: 50px;
+    padding-top: 30px;
     background-color: #F5F5F5;
 }
 a,
@@ -41,16 +41,22 @@ a.highlight:focus {
     color: #ff0039;
     text-decoration: underline;
 }
-.navbar-default {
+.navbar-default.nav-main {
     background-color: rgba(254, 77, 61, 1);
     border-color: transparent;
+    min-height: 30px;
+    height: 30px;
+}
+.navbar-default.nav-main .navbar-nav>li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .navbar-default.nav-index {
     background-color: rgba(254, 77, 61, 0.6);
     border-color: transparent;
 }
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
+.navbar-default.nav-main .navbar-nav > li > a:hover,
+.navbar-default.nav-main .navbar-nav > li > a:focus {
     background-color: transparent;
 }
 .navbar-default.nav-index .navbar-nav > li > a:hover,
