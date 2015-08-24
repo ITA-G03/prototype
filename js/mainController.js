@@ -3,11 +3,35 @@ app.controller('pageCtrl', function ($scope) {
     $scope.selectedResType = '全部';
     $scope.changeResType = function (type) {
         $scope.selectedResType = type;
+        for (var i = 0; i < $scope.res.length; i++) {
+            if (type == '全部') {
+                $scope.res[i].show = true;
+            } else {
+                $scope.res[i].show = $scope.res[i].tags.contains(type);
+            }
+        }
     }
 
     $scope.selectedSortType = 'default';
     $scope.changeSortType = function (type) {
         $scope.selectedSortType = type;
+        if (type == 'default') {
+            $scope.res.sort(function (a, b) {
+                return a.id - b.id;
+            })
+        } else if (type == 'sales') {
+            $scope.res.sort(function (a, b) {
+                return b.sales - a.sales;
+            })
+        } else if (type == 'rating') {
+            $scope.res.sort(function (a, b) {
+                return b.rating - a.rating;
+            })
+        } else if (type == 'speed') {
+            $scope.res.sort(function (a, b) {
+                return b.time - a.time;
+            })
+        }
     }
 
     $scope.res = [
@@ -18,7 +42,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 4.3,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["西餐", '快餐'],
+            show: true
         }, {
             id: 1,
             name: 'Tomcat汉堡',
@@ -26,7 +52,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 1.3,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["西餐", '快餐'],
+            show: true
         }, {
             id: 1,
             name: 'Tomcat肉',
@@ -34,7 +62,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 3.3,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["中餐"],
+            show: true
         }, {
             id: 1,
             name: '沙县Tomcat',
@@ -42,7 +72,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 2,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["中餐", '快餐'],
+            show: true
         }, {
             id: 1,
             name: 'Tomcat煲',
@@ -50,7 +82,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 5,
             sales: 13,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["中餐"],
+            show: true
         }, {
             id: 1,
             name: '炸Tomcat',
@@ -58,7 +92,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 4.3,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["西餐", '快餐'],
+            show: true
         }, {
             id: 1,
             name: 'Tomcat汉堡',
@@ -66,7 +102,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 1.3,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["西餐", '快餐'],
+            show: true
         }, {
             id: 1,
             name: 'Tomcat肉',
@@ -74,7 +112,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 3.3,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["中餐"],
+            show: true
         }, {
             id: 1,
             name: '沙县Tomcat',
@@ -82,7 +122,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 2,
             sales: 43,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["中餐", '快餐'],
+            show: true
         }, {
             id: 1,
             name: 'Tomcat煲',
@@ -90,7 +132,9 @@ app.controller('pageCtrl', function ($scope) {
             rating: 5,
             sales: 13,
             price: 20,
-            time: 30
+            time: 30,
+            tags: ["中餐"],
+            show: true
         }
 
     ];

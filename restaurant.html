@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="bower/angular/angular.js"></script>
+    <script src="bower/angular-animate/angular-animate.js"></script>
     <script src="bower/angular-ui-bootstrap/uibootstrap.js"></script>
     <script src="js/common.js"></script>
     <script src="js/resController.js"></script>
@@ -92,12 +93,12 @@
                                 </div>
                                 <table class="table table-hover table-food">
                                     <tbody>
-                                        <tr ng-repeat="f in foods">
+                                        <tr ng-repeat="f in foods" ng-show="f.type==selectedFoodType||selectedFoodType=='全部'">
                                             <td>{{f.name}}</td>
                                             <td class="table-food-price"><b>￥{{f.price}}/份</b>
                                             </td>
                                             <td class="table-food-action">
-                                                <button type="button" class="btn btn-danger btn-sm"><i class="fa fa-plus"></i>
+                                                <button type="button" class="btn btn-danger btn-sm" ng-click="addToCart($index)"><i class="fa fa-plus"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -148,24 +149,24 @@
                     <div class="panel-heading">购物车</div>
                     <div class="panel-body">
                         <div class="orders">
-                            <div class="order-box">
-                                <div class="order-name">Blabla</div>
+                            <div class="order-box" ng-repeat="c in cart">
+                                <div class="order-name">{{c.name}}</div>
                                 <div class="input-group order-num">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default btn-sm" type="button">-</button>
+                                        <button class="btn btn-default btn-sm" type="button" ng-click="less($index)">-</button>
                                     </span>
-                                    <input type="text" value="1" class="form-control input-sm">
+                                    <input type="text" class="form-control input-sm" value="{{c.num}}" readonly>
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default btn-sm" type="button">+</button>
+                                        <button class="btn btn-default btn-sm" type="button" ng-click="more($index)">+</button>
                                     </span>
                                 </div>
-                                <div class="order-price">$27</div>
+                                <div class="order-price">￥{{c.price}}</div>
                                 <div class="clear"></div>
                             </div>
 
                         </div>
                         <div class="pay">
-                            <span class="total">￥81</span>
+                            <span class="total">￥{{getCartValue()}}</span>
                             <button class="btn btn-success pull-right" ng-click="order()">去下单</button>
                             <div class="clear"></div>
                         </div>

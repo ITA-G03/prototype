@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="bower/angular/angular.js"></script>
+    <script src="bower/angular-animate/angular-animate.js"></script>
+    <script src="bower/angular-animate/angular-animate.js"></script>
     <script src="bower/angular-ui-bootstrap/uibootstrap.js"></script>
     <script src="js/common.js"></script>
     <script src="js/orderController.js"></script>
@@ -73,7 +75,7 @@
                         <tbody>
                             <tr ng-repeat="o in orders">
                                 <td>{{o.name}}</td>
-                                <td class="text-right">{{o.price}} * {{o.num}}</td>
+                                <td class="text-right">￥{{o.price}}{{o.num>1?' * '+o.num:''}}</td>
                             </tr>
                         </tbody>
                     </table>
